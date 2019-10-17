@@ -10,7 +10,7 @@ const flightHandlerFunction = (class0, class1) => {
 }
 
 // event listener that changes class for flight section from "power disabled" to "power enabled" on click
-document.querySelector("#activate-flight").addEventListener("click", function() {
+document.querySelector("#activate-flight").addEventListener("click", function () {
     flightHandlerFunction("disabled", "enabled")
 })
 
@@ -23,7 +23,7 @@ const mindReadingFunction = (class0, class1) => {
     mindReadingEl.classList.toggle(class1);
 }
 
-document.querySelector("#activate-mindreading").addEventListener("click", function() {
+document.querySelector("#activate-mindreading").addEventListener("click", function () {
     mindReadingFunction("disabled", "enabled")
 })
 
@@ -43,25 +43,27 @@ document.querySelector("#activate-xray").addEventListener("click", function () {
 // activate all powers button
 const activatePowersButton = document.querySelector("#activate-all")
 
-const allPowers = document.querySelectorAll(".power")
 // console.log(allPowers) returns a node list
 // must iterate through all sections with loop
 
-const allPowersFunction = (class0, class1) => {
-    allPowers.classList.toggle(class0);
-    allPowers.classList.toggle(class1);
-} 
 
-// for (let i=0; i < allPowers.length; i++) {
-//     allPowers[i].addEventListener("click", function() {
-//         allPowersFunction("diabled", "enabled")
-//     })
-// }
+const activateAllLoop = () => {
+    const allPowers = document.querySelectorAll(".disabled")
+    for (let i = 0; i < allPowers.length; i++) {
+        allPowers[i].classList.toggle("disabled");
+        allPowers[i].classList.toggle("enabled");
+    }}
 
-let i = 0
+    document.querySelector("#activate-all").addEventListener("click", () => activateAllLoop())
+    
+    
+// deactivate all button
 
-allPowers.forEach((power) => {
-    allPowers[i].addEventListener("click", () => {
-        allPowersFunction("disabled", "enabled");
-    })
-})
+const deactivateAllLoop = () => {
+    const allPowers = document.querySelectorAll(".enabled")
+    for (let i = 0; i < allPowers.length; i++) {
+        allPowers[i].classList.toggle("disabled");
+        allPowers[i].classList.toggle("enabled");
+    }}
+
+    document.querySelector("#deactivate-all").addEventListener("click", () => deactivateAllLoop())
